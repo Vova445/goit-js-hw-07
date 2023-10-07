@@ -1,7 +1,6 @@
 import { galleryItems } from './gallery-items.js';
 
 const gallery = document.querySelector(".gallery");
-
 const markup = galleryItems.map(({ preview, original, description }) => {
     return `
     <li class="gallery__item">
@@ -15,31 +14,24 @@ const markup = galleryItems.map(({ preview, original, description }) => {
       </a>
     </li>`;
   }).join("");
-
 gallery.insertAdjacentHTML("beforeend", markup);
-
 gallery.addEventListener("click", onGallery);
-
 function onGallery(evt) {
   evt.preventDefault();
-
-
   if (evt.target.className !== "gallery__image") {
     return;
-  } else {
-    const fullImgModal = basicLightbox.create(`
+  } 
+  else {
+    const modal = basicLightbox.create(`
       <div class="modal">
         <img src=${evt.target.dataset.source} width="800" height="600">
       </div>
     `);
-
-    fullImgModal.show();
-
+    modal.show();
     window.addEventListener("keydown", onModalKeydown);
-
     function onModalKeydown(evt) {
       if (evt.code === "Escape") {
-        fullImgModal.close();
+       modal.close();
         window.removeEventListener("keydown", onModalKeydown);
       }
     }
