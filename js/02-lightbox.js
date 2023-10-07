@@ -2,7 +2,6 @@ import { galleryItems } from "./gallery-items.js";
 
 const gallery = document.querySelector(".gallery");
 
-//створюємо всі картки
 const markup = galleryItems .map(({ preview, original, description }) => {
     return `
     <li class="gallery__item">
